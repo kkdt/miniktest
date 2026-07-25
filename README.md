@@ -64,7 +64,7 @@ gcr.io/k8s-minikube/storage-provisioner:v5
 
 $ kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
 
-$ kubectl apply --filename ttps://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
+$ kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
 
 $ kubectl get pods -A
 ```
