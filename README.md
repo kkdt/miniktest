@@ -8,6 +8,10 @@ Two products will be explored.
 1. [Tekton][tekton]
 2. [TestKube][testkube]
 
+## Minikube Cluster
+
+$ minikube image ls 
+```
 registry.k8s.io/pause:3.10.1
 registry.k8s.io/kube-scheduler:v1.35.1
 registry.k8s.io/kube-proxy:v1.35.1
@@ -16,7 +20,7 @@ registry.k8s.io/kube-apiserver:v1.35.1
 registry.k8s.io/etcd:3.6.6-0
 registry.k8s.io/coredns/coredns:v1.13.1
 gcr.io/k8s-minikube/storage-provisioner:v5
-
+```
 
 ## Tekton
 
@@ -24,7 +28,7 @@ gcr.io/k8s-minikube/storage-provisioner:v5
 
 $ kubectl apply --filename https://infra.tekton.dev/tekton-releases/pipeline/latest/release.yaml
 
-$ kubectl get pods -A --watch
+$ kubectl get pods -A 
 ```
 NAMESPACE                    NAME                                                READY   STATUS    RESTARTS      AGE
 kube-system                  coredns-7d764666f9-jrdtg                            1/1     Running   0             31m
