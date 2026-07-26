@@ -1,0 +1,7 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: pipeline-check-websites
+spec:
+  pipelineRef:
+    name: pipeline-check-websites

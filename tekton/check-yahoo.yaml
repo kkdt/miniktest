@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: check-yahoo
+spec:
+  steps:
+    - name: check
+      image: alpine
+      script: |
+        #!/bin/sh
+        nslookup www.yahoo.com
+        ping -c 3 www.yahoo.com

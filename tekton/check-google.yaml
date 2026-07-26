@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: check-google
+spec:
+  steps:
+    - name: check
+      image: alpine
+      script: |
+        #!/bin/sh
+        nslookup www.google.com
+        ping -c 3 www.google.com

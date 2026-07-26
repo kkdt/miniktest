@@ -150,13 +150,16 @@ gcr.io/k8s-minikube/storage-provisioner:v5
 
 #### Using kubectl proxy
 $ kubectl proxy
+
 Browse http://localhost:8001/api/v1/namespaces/tekton-pipelines/services/tekton-dashboard:http/proxy/ to access your Dashboard.
 
 #### Using kubectl port-forward
 $ kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
+
 Browse http://localhost:9097 to access your Dashboard.
 
 [//]: Links
 
 [tekton]: https://tekton.dev/docs/
+[tekton-helm]: https://github.com/cdfoundation/tekton-helm-chart
 [testkube]: https://docs.testkube.io/articles/open-source

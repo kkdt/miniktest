@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: check-website
+spec:
+  params:
+    - name: website
+      type: string
+  steps:
+    - name: check
+      image: alpine
+      script: |
+        #!/bin/bash
+        echo "Checking service $(params.website)"
+        nslookup $(params.website)
+        ping -c 3 $(params.website)
