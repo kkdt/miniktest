@@ -6,6 +6,8 @@ Using the fundamental building blocks of Tekton to create example test automatio
 The primary reference is from [Tekton Getting Started][tekton-getting-started] page that describes **Tasks**, **Pipelines**, 
 and **Triggers** as well as the initial RBAC resources that need to defined in the cluster.
 
+**Tekton Triggers are natively built to receive HTTP/Webhook POST requests**
+
 ## Install Tekton Pipelines
 
 $ kubectl apply --filename https://infra.tekton.dev/tekton-releases/pipeline/latest/release.yaml
