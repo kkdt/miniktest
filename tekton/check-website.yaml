@@ -7,13 +7,17 @@ spec:
     - name: website
       type: string
   steps:
-    - name: check
+    - name: banner
       image: alpine
       script: |
         #!/bin/sh
         echo "---------------------------------------------"
         echo "Checking service $(params.website)"
         echo "---------------------------------------------"
-        echo ""
+    - name: docker-hello
+      image: docker.io/hello-world
+    - name: check
+      image: alpine
+      script: |
         nslookup $(params.website)
         ping -c 3 $(params.website)
