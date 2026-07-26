@@ -10,7 +10,10 @@ spec:
     - name: check
       image: alpine
       script: |
-        #!/bin/bash
+        #!/bin/sh
+        echo "---------------------------------------------"
         echo "Checking service $(params.website)"
+        echo "---------------------------------------------"
+        echo ""
         nslookup $(params.website)
         ping -c 3 $(params.website)

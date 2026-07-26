@@ -12,4 +12,3 @@ spec:
         - google
       taskRef:
         name: check-yahoo
-# How do we iterate additional websites using a list of website params

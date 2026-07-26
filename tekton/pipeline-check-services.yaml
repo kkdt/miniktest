@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: pipeline-check-services
+spec:
+  params:
+    - name: websites
+      type: array
+      description: List of website services to check
+      default:
+        - www.google.com
+        - www.yahoo.com
+  tasks:
+    - name: check-service
+      taskRef:
+        name: check-website
+      matrix:
+        params:
+          - name: website
+            value: $(params.websites[*])

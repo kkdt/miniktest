@@ -1,3 +1,4 @@
+# Reference: https://tekton.dev/docs/getting-started/triggers/
 apiVersion: v1
 kind: ServiceAccount
 metadata:

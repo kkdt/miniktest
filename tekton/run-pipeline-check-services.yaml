@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: pipeline-check-services
+spec:
+  pipelineRef:
+    name: pipeline-check-services
+  params:
+    - name: websites
+      value:
+        - www.google.com
+        - www.yahoo.com
+        - www.caci.com
+        - www.halo.svc
