@@ -1,3 +1,4 @@
+# Example: A Pipeline that executes the explicit Tasks that check hardcoded websites
 apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
@@ -7,8 +8,9 @@ spec:
     - name: google
       taskRef:
         name: check-google
-    - name: yahoo
+
+    - name: redhat
       runAfter:
         - google
       taskRef:
-        name: check-yahoo
+        name: check-redhat

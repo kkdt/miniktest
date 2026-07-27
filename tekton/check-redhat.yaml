@@ -1,16 +1,16 @@
-# Example: A Task that checks connectivity to Google
+# Example: A Task that checks connectivity to Red Hat
 apiVersion: tekton.dev/v1
 kind: Task
 metadata:
-  name: check-google
+  name: check-redhat
 spec:
   steps:
     - name: nslookup
       image: alpine
       script: |
-        nslookup www.google.com
+        nslookup www.redhat.com
 
     - name: ping
       image: alpine
       script: |
-        ping -c 3 www.google.com
+        ping -c 3 www.redhat.com

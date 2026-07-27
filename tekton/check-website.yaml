@@ -1,3 +1,4 @@
+# Example: A Task that takes single parameter (website) to execute multiple steps to include a container image
 apiVersion: tekton.dev/v1
 kind: Task
 metadata:
@@ -12,11 +13,20 @@ spec:
       script: |
         #!/bin/sh
         echo "---------------------------------------------"
-        echo "Checking service $(params.website)"
+        echo "Checking website / service $(params.website)"
         echo "---------------------------------------------"
+
+    # Execute container image as part of a Task
     - name: docker-hello
       image: docker.io/hello-world
-    - name: check
+
+    - name: nslookup
+      image: alpine
+      script: |
+        nslookup $(params.website)
+        ping -c 3 $(params.website)
+
+    - name: ping
       image: alpine
       script: |
         nslookup $(params.website)

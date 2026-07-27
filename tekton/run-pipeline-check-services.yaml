@@ -9,5 +9,5 @@ spec:
     - name: websites
       value:
         - www.google.com
-        - www.yahoo.com
+        - www.redhat.com
         - www.caci.com
