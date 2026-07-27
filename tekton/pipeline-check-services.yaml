@@ -11,7 +11,34 @@ spec:
       default:
         - www.google.com
         - www.redhat.com
+    - name: namespace
+      type: string
+      description: The namespace of the provided website(s)
+      default: "00000"
+    - name: scenarioId
+      type: string
+      description: Identifier for the test scenario
+      default: "00000"
+
   tasks:
+    - name: init-scenario
+      taskSpec:
+        params:
+          - name: scenarioId
+            type: string
+        steps:
+          - name:
+            image: alpine
+            script: |
+              #!/bin/sh
+              echo "---------------------------------------------"
+              echo "Checking services: $(params.scenarioId)"
+              echo "Namespace: $(params.namespace)"
+              echo "---------------------------------------------"
+      params:
+        - name: scenarioId
+          value: $(params.scenarioId)
+
     - name: check-service
       taskRef:
         name: check-website

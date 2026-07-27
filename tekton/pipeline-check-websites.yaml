@@ -4,8 +4,33 @@ kind: Pipeline
 metadata:
   name: pipeline-check-websites
 spec:
+  params:
+    - name: scenarioId
+      type: string
+      description: Identifier for the test scenario
+      default: "00000"
+
   tasks:
+    - name: init-scenario
+      taskSpec:
+        params:
+          - name: scenarioId
+            type: string
+        steps:
+          - name:
+            image: alpine
+            script: |
+              #!/bin/sh
+              echo "---------------------------------------------"
+              echo "Checking websites: $(params.scenarioId)"
+              echo "---------------------------------------------"
+      params:
+        - name: scenarioId
+          value: $(params.scenarioId)
+
     - name: google
+      runAfter:
+        - init-scenario
       taskRef:
         name: check-google
 

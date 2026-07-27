@@ -12,3 +12,5 @@ spec:
   params:
     - name: scenarioId
       value: $(body.scenarioId)
+    - name: namespace
+      value: $(body.namespace)

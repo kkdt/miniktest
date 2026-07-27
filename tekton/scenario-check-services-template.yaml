@@ -1,0 +1,46 @@
+# TriggerTemplate for pipeline-check-websites.
+# Receives scenarioId from the TriggerBinding and passes it through to the PipelineRun.
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: scenario-check-services-template
+spec:
+  params:
+    - name: scenarioId
+      description: Identifier for the test scenario
+      default: "00000"
+    - name: namespace
+      description: Kubernetes namespace that this scenario template is testing
+      default: "default"
+
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1
+      kind: PipelineRun
+      metadata:
+        generateName: pipeline-check-websites-triggered-run-
+      spec:
+        pipelineRef:
+          name: pipeline-check-websites
+        params:
+          - name: scenarioId
+            value: $(tt.params.scenarioId)
+
+    - apiVersion: tekton.dev/v1
+      kind: PipelineRun
+      metadata:
+        generateName: pipeline-check-services-triggered-run-
+      spec:
+        pipelineRef:
+          name: pipeline-check-services
+        params:
+          - name: scenarioId
+            value: $(tt.params.scenarioId)
+          - name: namespace
+            value: $(tt.params.namespace)
+          - name: websites
+            value:
+              - www.google.com
+              - www.redhat.com
+              - www.caci.com
+              - www.jetbrains.com
+              - www.tax.virginia.gov

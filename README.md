@@ -44,8 +44,27 @@
 1. Apply the RBAC resources to create the `tekton-robot`
     ```
     kubectl apply --filename tekton/rbac.yaml
+    kubectl apply --filename tekton/scenario-check-services-template.yaml
+    kubectl apply --filename tekton/scenario-check-services-parameters.yaml
+    kubectl apply --filename tekton/scenario-check-services-lisener.yaml
     ```
-2. TODO
+2. Enable port-forwarding to enable curl
+    ```
+    kubectl port-forward service/el-scenario-check-services-listener 8080
+    ```
+3. Invoke the trigger via curl
+    ```
+    curl -X POST http://localhost:8080 \
+      -H "Content-Type: application/json" \
+      -d @tekton/scenarios/scenario-default.json
+    ```
+4. Inspect logs
+    ```
+    kubectl logs -f -n default service/el-scenario-check-services-listener
+    ```
+5. On the Dashboard
+    - PipelineRuns will display all triggered Pipeline(s)
+    - TaskRuns will display all triggered Tasks
 
 [//]: Links
 
