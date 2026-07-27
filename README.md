@@ -39,6 +39,14 @@
     ```
 6. Clean up between each pipeline execution to clean up the Task resources that were created by the pipeline
 
+### Tekton Triggers
+
+1. Apply the RBAC resources to create the `tekton-robot`
+    ```
+    kubectl apply --filename tekton/rbac.yaml
+    ```
+2. TODO
+
 [//]: Links
 
 [tekton]: https://tekton.dev/docs/

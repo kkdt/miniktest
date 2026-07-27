@@ -1,0 +1,14 @@
+# Encapsulate parameter(s)
+# Extracts scenarioId, etc. from the incoming HTTP POST payload body.
+# TriggerBinding parameters are scalar values only (strings). They extract a single value from the event payload per parameter.
+
+# Note: The payload can be part of an SDK
+
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: scenario-check-services-parameters
+spec:
+  params:
+    - name: scenarioId
+      value: $(body.scenarioId)
