@@ -5,6 +5,12 @@
 1. Tekton: https://tekton.dev/docs/
 2. TestKube: https://docs.testkube.io/articles/open-source
 
+## Table of Contents
+
+- [Tekton - Quick Start](#tekton---quick-start)
+    - [Tekton Triggers](#tekton-triggers)
+- [TestKube - Quick Start](#testkube---quick-start)
+
 ## Tekton - Quick Start
 
 1. Load the latest Tekton release into Minikube: pipeline, triggers, dashboard
