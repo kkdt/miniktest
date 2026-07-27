@@ -48,7 +48,7 @@
     kubectl apply --filename tekton/scenario-check-services-parameters.yaml
     kubectl apply --filename tekton/scenario-check-services-lisener.yaml
     ```
-2. Enable port-forwarding to enable curl
+2. Enable port-forwarding to enable curl (keep this terminal running on the side)
     ```
     kubectl port-forward service/el-scenario-check-services-listener 8080
     ```
@@ -65,6 +65,19 @@
 5. On the Dashboard
     - PipelineRuns will display all triggered Pipeline(s)
     - TaskRuns will display all triggered Tasks
+6. Cleaning up PipelineRuns and TaskRuns - You can not remove PipelineRuns/TaskRuns from a trigger directly — triggers 
+   only create resources, they have no delete capability.
+    ```bash
+    # Delete all PipelineRuns
+    kubectl delete pipelineruns --all
+   
+    # Delete all TaskRuns
+    kubectl delete taskruns --all
+   
+    # Or, delete by name prefix (to target only trigger-created runs)
+    kubectl delete pipelineruns -l triggers.tekton.dev/eventlistener=scenario-check-services-listener
+    kubectl delete taskruns -l triggers.tekton.dev/eventlistener=scenario-check-services-listener
+    ```
 
 ## TestKube - Quick Start
 
